@@ -1,7 +1,7 @@
 import { CircularProgressBar } from "../components/CircularProgressBar/CircularProgressBar";
 
 export default {
-  title: "Example/ProgressBar",
+  title: "Example/Circular",
   component: CircularProgressBar,
   tags: ["autodocs"],
   parameters: {

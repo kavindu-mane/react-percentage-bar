@@ -1,7 +1,7 @@
 import {LinearProgressBar} from "../components/LinearProgressBar/LinearProgressBar"
 
 export default {
-  title: "Example/ProgressBar",
+  title: "Example/Linear",
   component: LinearProgressBar,
   tags: ["autodocs"],
   parameters: {

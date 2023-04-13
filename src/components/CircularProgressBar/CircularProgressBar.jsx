@@ -19,7 +19,7 @@ export const CircularProgressBar = ({
   text,
   showPercentage,
   PercentageClass,
-  TextClass,
+  textClass,
   children,
   roundLineCap,
   animation,
@@ -27,6 +27,13 @@ export const CircularProgressBar = ({
   reverse,
   reverseDuration,
   loopCount,
+  startDelay,
+  reverseDelay,
+  antiClockWize,
+  padding,
+  backgroundColor,
+  separator,
+  chartValue,
 }) => {
   let background;
   let innerDiameter;
@@ -35,6 +42,7 @@ export const CircularProgressBar = ({
   let outerShadow;
   radius = toPX(radius) === null ? radius + "px" : radius;
   size = toPX(size) === null ? size + "px" : size;
+  padding = toPX(padding) === null ? padding + "px" : padding;
   const [currentPercentage, setPercentage] = useState(0);
   const returnState = (state) => {
     setPercentage(state);
@@ -53,23 +61,25 @@ export const CircularProgressBar = ({
   if (PercentageClass === null) PercentageClass = "percentage";
 
   // set text class
-  if (TextClass === null) TextClass = "text";
+  if (textClass === null) textClass = "text";
 
   // set width and height of the inner and outer divs
   const o_dia = `calc(${radius}*2)`;
   const i_dia = `calc(calc(${radius} - ${size}) * 2)`;
   innerDiameter = { width: i_dia, height: i_dia };
   outerDiameter = { width: o_dia, height: o_dia };
+  const outerBackground = { padding: padding, background: backgroundColor };
   background = {
     borderColor: trackColor,
     borderWidth: size,
-    borderStyle: "solid",
+    borderStyle: style === "pie-chart" ? "none":"solid",
   };
+
 
   return (
     <div
       className={["outer-div", outerShadow].join(" ")}
-      style={{ ...outerDiameter }}
+      style={{ ...outerDiameter, ...outerBackground }}
     >
       <div
         className={["inner-div", innerShadow].join(" ")}
@@ -89,12 +99,27 @@ export const CircularProgressBar = ({
           reverse={reverse}
           reverseDuration={reverseDuration}
           loopCount={loopCount}
+          startDelay={startDelay}
+          reverseDelay={reverseDelay}
+          antiClockWize={antiClockWize}
+          margin={padding}
+          separator={separator}
+          style={style}
+          chartValue={chartValue}
         />
         <div className="text-area" style={{ ...innerDiameter }}>
-          <p className={PercentageClass}>
+          <p
+            className={PercentageClass}
+            style={{ display: style !== "pie-chart" ? "flex" : "none" }}
+          >
             {showPercentage ? `${currentPercentage}%` : ""}
           </p>
-          <p className={TextClass}>{text}</p>
+          <p
+            className={textClass}
+            style={{ display: style !== "pie-chart" ? "flex" : "none" }}
+          >
+            {text}
+          </p>
           {children}
         </div>
       </div>
@@ -118,15 +143,7 @@ CircularProgressBar.propTypes = {
   /**
    * How large should the button be?
    */
-  style: PropTypes.oneOf([
-    "solid",
-    "dashed",
-    "dotted",
-    "double",
-    "groove",
-    "ridge",
-    "pie-chart",
-  ]),
+  style: PropTypes.oneOf(["solid", "pie-chart", "separators"]),
   /**
    * What is the progress circle width
    */
@@ -164,13 +181,13 @@ CircularProgressBar.propTypes = {
    */
   showPercentage: PropTypes.bool,
   /**
-   * Add a custom shadow class for inner side of progress bar
+   * Add a custom percentage class
    */
   PercentageClass: PropTypes.string,
   /**
-   * Add a custom shadow class for outer side of progress bar
+   * Add a custom text class
    */
-  TextClass: PropTypes.string,
+  textClass: PropTypes.string,
   /**
    * linecap is round or or not
    */
@@ -195,6 +212,34 @@ CircularProgressBar.propTypes = {
    * What is the animation iteration count
    */
   loopCount: PropTypes.number,
+  /**
+   * What is the animation start delay
+   */
+  startDelay: PropTypes.number,
+  /**
+   * What is the animation reverse delay
+   */
+  reverseDelay: PropTypes.number,
+  /**
+   * progress bar value increasing direction
+   */
+  antiClockWize: PropTypes.bool,
+  /**
+   * Padding between progress bar and background
+   */
+  padding: PropTypes.string,
+  /**
+   * What color or color gradient use as background
+   */
+  backgroundColor: PropTypes.string,
+  /**
+   * What is the seperator width , separators count , separator color
+   */
+  separator: PropTypes.array,
+  /**
+   * What is the chart breakpoin percentages and colors of each part
+   */
+  chartValue: PropTypes.object,
 };
 
 CircularProgressBar.defaultProps = {
@@ -212,11 +257,18 @@ CircularProgressBar.defaultProps = {
   text: null,
   showPercentage: true,
   PercentageClass: null,
-  TextClass: null,
+  textClass: null,
   roundLineCap: true,
   animation: true,
   percentageAnimation: true,
   reverse: true,
   reverseDuration: 2000,
-  loopCount: 1,
+  loopCount: 0,
+  startDelay: 100,
+  reverseDelay: 100,
+  antiClockWize: false,
+  padding: 0,
+  backgroundColor: "transparent",
+  separator: [5, 12, "#fff"],
+  chartValue: { 20: "#9CB4CC", 60: "#0EA293", 100: "#FFA559" },
 };

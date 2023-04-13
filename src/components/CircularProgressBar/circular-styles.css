@@ -3,12 +3,15 @@
   border-radius: 50%;
 }
 
-.inner-div {
+.inner-div{
   border-radius: 50%;
 }
 
-circle {
+circle{
   fill: none;
+}
+
+.stroke-circles{
   stroke: url(#GradientColor);
 }
 

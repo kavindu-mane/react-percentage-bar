@@ -1,0 +1,44 @@
+.outer-div-linear {
+  padding: 2px;
+}
+
+.text-linear {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+  color: #00235B;
+}
+
+.inner-div-linear {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.progress-div {
+  position: relative;
+}
+
+.progress-bar,
+.track {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.on-top-percentage {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  width:fit-content;
+  padding: 0 5px;
+  font-weight: 600;
+}
+
+.percentage-linear {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+}
