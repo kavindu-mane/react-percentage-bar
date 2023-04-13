@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import toPX from "to-px";
 
 export const Circle = ({
   radius,
@@ -20,22 +19,30 @@ export const Circle = ({
   antiClockWize,
   margin,
   separator,
-  style,
+  styles,
   chartValue,
 }) => {
+  const toPX = (measure) => {
+    if (
+      measure.toString().toLowerCase().includes("em") ||
+      measure.toString().toLowerCase().includes("em")
+    )
+      return 16 * parseFloat(measure, 10);
+    else return parseFloat(measure, 10);
+  };
   const [state, setState] = useState(0);
   const [pieState, setPieState] = useState(0);
   const [isReverse, setIsReverse] = useState(false);
   const [currentLoop, setCurrentLoop] = useState(1);
   let pxValue;
-  if (style !== "pie-chart")
+  if (styles !== "pie-chart")
     pxValue = 2 * Math.PI * (toPX(radius) - toPX(size) / 2);
   else pxValue = 2 * Math.PI * (toPX(radius) / 2);
   const dashOfset = (state) => {
     return (
       pxValue -
       (pxValue * parseInt(state)) / 100 +
-      (![0, 100].includes(state) && roundLineCap && style !== "pie-chart"
+      (![0, 100].includes(state) && roundLineCap && styles !== "pie-chart"
         ? toPX(size) / 4
         : 0)
     );
@@ -81,7 +88,7 @@ export const Circle = ({
   //  animation
   useEffect(() => {
     // solid and separators style
-    if ((animation || percentageAnimation) && style !== "pie-chart") {
+    if ((animation || percentageAnimation) && styles !== "pie-chart") {
       if (loopCount >= currentLoop) {
         if (percentage > state && !isReverse) animatingFunc(duration, +1);
         else if (state > 0 && reverse && isReverse)
@@ -96,7 +103,7 @@ export const Circle = ({
         if (percentage > state) animatingFunc(duration, +1);
       }
       // pie chart
-    } else if (animation && style === "pie-chart") {
+    } else if (animation && styles === "pie-chart") {
       if (pieState < 100) {
         setTimeout(() => {
           setPieState((prev) => ++prev);
@@ -133,8 +140,8 @@ export const Circle = ({
         strokeWidth={radius}
         strokeDasharray={pxValue}
         stroke={chartValue[p]}
-        display={style === "pie-chart" ? "flex" : "none"}
-        strokeDashoffset={dashOfset( (p > pieState) && animation ? pieState : p)}
+        display={styles === "pie-chart" ? "flex" : "none"}
+        strokeDashoffset={dashOfset(p > pieState && animation ? pieState : p)}
       ></circle>
     );
   };
@@ -150,31 +157,31 @@ export const Circle = ({
     >
       <defs>
         <linearGradient id="GradientColor">
-          <stop offset="0%" stop-color={endColor} />
-          <stop offset="100%" stop-color={startColor} />
+          <stop offset="0%" stopColor={endColor} />
+          <stop offset="100%" stopColor={startColor} />
         </linearGradient>
       </defs>
 
       <circle
         className="stroke-circles"
-        cx={radius}
-        cy={radius}
-        r={`calc(${radius} - calc(${size})/2)`}
+        cx={toPX(radius)}
+        cy={toPX(radius)}
+        r={toPX(radius) - toPX(size) / 2}
         strokeLinecap={roundLineCap ? "round" : "butt"}
         strokeWidth={size}
-        display={style !== "pie-chart" ? "flex" : "none"}
+        display={styles !== "pie-chart" ? "flex" : "none"}
         strokeDasharray={pxValue}
         strokeDashoffset={dashOfset(animation ? state : percentage)}
       />
 
       <circle
-        cx={radius}
-        cy={radius}
-        r={`calc(${radius} - calc(${size})/2)`}
+        cx={toPX(radius)}
+        cy={toPX(radius)}
+        r={toPX(radius) - toPX(size) / 2}
         style={{ stroke: separator[2] }}
         strokeLinecap={"butt"}
         strokeWidth={size}
-        display={style === "separators" ? "flex" : "none"}
+        display={styles === "separators" ? "flex" : "none"}
         strokeDasharray={`${separator[0]} , ${
           (pxValue - separator[0] * separator[1]) / separator[1]
         } `}

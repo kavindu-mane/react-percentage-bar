@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import toPX from "to-px";
 import "./linear-styles.css";
 
 export const LinearProgressBar = ({
@@ -20,9 +18,16 @@ export const LinearProgressBar = ({
   percentageAnimation,
   roundLineCap,
 }) => {
+  const toPX = (measure) => {
+    if (
+      measure.toString().toLowerCase().includes("em") ||
+      measure.toString().toLowerCase().includes("em")
+    )
+      return 16 * parseFloat(measure, 10);
+    else return parseFloat(measure, 10);
+  };
   const [state, setState] = useState(0);
-  const currentWidth = (p) =>
-    ((toPX(width) === null ? width : toPX(width)) * p) / 100;
+  const currentWidth = (p) => (toPX(width) * p) / 100;
   const track = {
     background: trackColor,
     width: width,
@@ -35,7 +40,7 @@ export const LinearProgressBar = ({
     width: animation ? currentWidth(state) : currentWidth(percentage),
     justifyContent: percentagePosition === "onleft" ? "left" : "right",
     right: startDirection === "right" ? 0 : "auto",
-    borderRadius: roundLineCap ? `calc(${height} / 2)` : 0
+    borderRadius: roundLineCap ? `calc(${height} / 2)` : 0,
   };
   textClass = textClass === null ? "text-linear" : textClass;
   const isLeft = showPercentage && percentagePosition === "left";
@@ -74,10 +79,7 @@ export const LinearProgressBar = ({
         </p>
 
         <div className="progress-div" style={{ width: width, height: height }}>
-          <div
-            className="track"
-            style={{ ...track }}
-          ></div>
+          <div className="track" style={{ ...track }}></div>
           <div
             className="progress-bar"
             style={{
@@ -110,69 +112,6 @@ export const LinearProgressBar = ({
       </div>
     </div>
   );
-};
-
-LinearProgressBar.propTypes = {
-  /**
-   * Add text value in the progress bar
-   */
-  text: PropTypes.string,
-  /**
-   * Add a custom text class
-   */
-  textClass: PropTypes.string,
-  /**
-   * Add a color for percentage value
-   */
-  percentageColor: PropTypes.string,
-  /**
-   * What is the percentage
-   */
-  percentage: PropTypes.number,
-  /**
-   * percentage show or not in the progress bar
-   */
-  showPercentage: PropTypes.bool,
-  /**
-   * What color or color gradient use as progressbar background
-   */
-  color: PropTypes.string,
-  /**
-   * What color use as progressbar track color
-   */
-  trackColor: PropTypes.string,
-  /**
-   * What is the max width of the progress bar
-   */
-  width: PropTypes.string,
-  /**
-   * What is the height of the progress bar
-   */
-  height: PropTypes.string,
-  /**
-   * What is the animation duration (in ms)
-   */
-  duration: PropTypes.number,
-  /**
-   * What is the percentage position.
-   */
-  percentagePosition: PropTypes.oneOf("left", "right", "onright", "onleft"),
-  /**
-   * progress bar animate or not
-   */
-  animation: PropTypes.bool,
-  /**
-   * percentage value is animate or not
-   */
-  percentageAnimation: PropTypes.bool,
-  /**
-   * What is the progress bar animation start direction
-   */
-  startDirection: PropTypes.oneOf("left", "right"),
-  /**
-   * linecap is round or or not
-   */
-  roundLineCap: PropTypes.bool,
 };
 
 LinearProgressBar.defaultProps = {

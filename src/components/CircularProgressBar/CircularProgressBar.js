@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Circle } from "./Circle";
-import toPX from "to-px";
 import "./circular-styles.css";
 
 export const CircularProgressBar = ({
   color,
   trackColor,
   radius,
-  style,
+  styles,
   size,
   percentage,
   duration,
@@ -40,12 +38,17 @@ export const CircularProgressBar = ({
   let outerDiameter;
   let innerShadow;
   let outerShadow;
-  radius = toPX(radius) === null ? radius + "px" : radius;
-  size = toPX(size) === null ? size + "px" : size;
-  padding = toPX(padding) === null ? padding + "px" : padding;
   const [currentPercentage, setPercentage] = useState(0);
   const returnState = (state) => {
     setPercentage(state);
+  };
+  const toPX = (measure) => {
+    if (
+      measure.toString().toLowerCase().includes("em") ||
+      measure.toString().toLowerCase().includes("em")
+    )
+      return 16 * parseFloat(measure, 10);
+    else return parseFloat(measure, 10);
   };
 
   // set shadow class
@@ -64,17 +67,16 @@ export const CircularProgressBar = ({
   if (textClass === null) textClass = "text";
 
   // set width and height of the inner and outer divs
-  const o_dia = `calc(${radius}*2)`;
-  const i_dia = `calc(calc(${radius} - ${size}) * 2)`;
+  const o_dia = toPX(radius) * 2;
+  const i_dia = (toPX(radius) - toPX(size)) * 2;
   innerDiameter = { width: i_dia, height: i_dia };
   outerDiameter = { width: o_dia, height: o_dia };
   const outerBackground = { padding: padding, background: backgroundColor };
   background = {
     borderColor: trackColor,
     borderWidth: size,
-    borderStyle: style === "pie-chart" ? "none":"solid",
+    borderStyle: styles === "pie-chart" ? "none" : "solid",
   };
-
 
   return (
     <div
@@ -83,7 +85,8 @@ export const CircularProgressBar = ({
     >
       <div
         className={["inner-div", innerShadow].join(" ")}
-        style={{ ...background, ...innerDiameter }}
+        style={{ ...background, ...outerDiameter }}
+        /// in testing outerDiameter cannot use and innerDiameter use it
       >
         <Circle
           radius={radius}
@@ -104,19 +107,19 @@ export const CircularProgressBar = ({
           antiClockWize={antiClockWize}
           margin={padding}
           separator={separator}
-          style={style}
+          styles={styles}
           chartValue={chartValue}
         />
         <div className="text-area" style={{ ...innerDiameter }}>
           <p
             className={PercentageClass}
-            style={{ display: style !== "pie-chart" ? "flex" : "none" }}
+            style={{ display: styles !== "pie-chart" ? "flex" : "none" }}
           >
             {showPercentage ? `${currentPercentage}%` : ""}
           </p>
           <p
             className={textClass}
-            style={{ display: style !== "pie-chart" ? "flex" : "none" }}
+            style={{ display: styles !== "pie-chart" ? "flex" : "none" }}
           >
             {text}
           </p>
@@ -127,125 +130,10 @@ export const CircularProgressBar = ({
   );
 };
 
-CircularProgressBar.propTypes = {
-  /**
-   * What color or color gradient use as progressbar background
-   */
-  color: PropTypes.string,
-  /**
-   * What color use as progressbar track color
-   */
-  trackColor: PropTypes.string,
-  /**
-   * What is the width and height
-   */
-  radius: PropTypes.string,
-  /**
-   * How large should the button be?
-   */
-  style: PropTypes.oneOf(["solid", "pie-chart", "separators"]),
-  /**
-   * What is the progress circle width
-   */
-  size: PropTypes.string,
-  /**
-   * What is the percentage
-   */
-  percentage: PropTypes.number,
-  /**
-   * What is the animation duration (in ms)
-   */
-  duration: PropTypes.number,
-  /**
-   * What is the start position of the progress bar. 0 is top most point  , 90 is right most point
-   */
-  startPosition: PropTypes.number,
-  /**
-   * Shadow is add or not
-   */
-  shadow: PropTypes.bool,
-  /**
-   * Add a custom shadow class for inner side of progress bar
-   */
-  innerShadowClass: PropTypes.string,
-  /**
-   * Add a custom shadow class for outer side of progress bar
-   */
-  outerShadowClass: PropTypes.string,
-  /**
-   * Add text value in the progress bar
-   */
-  text: PropTypes.string,
-  /**
-   * percentage show or not in the progress bar
-   */
-  showPercentage: PropTypes.bool,
-  /**
-   * Add a custom percentage class
-   */
-  PercentageClass: PropTypes.string,
-  /**
-   * Add a custom text class
-   */
-  textClass: PropTypes.string,
-  /**
-   * linecap is round or or not
-   */
-  roundLineCap: PropTypes.bool,
-  /**
-   * progress bar animate or not
-   */
-  animation: PropTypes.bool,
-  /**
-   * percentage value is animate or not
-   */
-  percentageAnimation: PropTypes.bool,
-  /**
-   * Progressbar reverse or not
-   */
-  reverse: PropTypes.bool,
-  /**
-   * What is the animation reverse duration (in ms)
-   */
-  reverseDuration: PropTypes.number,
-  /**
-   * What is the animation iteration count
-   */
-  loopCount: PropTypes.number,
-  /**
-   * What is the animation start delay
-   */
-  startDelay: PropTypes.number,
-  /**
-   * What is the animation reverse delay
-   */
-  reverseDelay: PropTypes.number,
-  /**
-   * progress bar value increasing direction
-   */
-  antiClockWize: PropTypes.bool,
-  /**
-   * Padding between progress bar and background
-   */
-  padding: PropTypes.string,
-  /**
-   * What color or color gradient use as background
-   */
-  backgroundColor: PropTypes.string,
-  /**
-   * What is the seperator width , separators count , separator color
-   */
-  separator: PropTypes.array,
-  /**
-   * What is the chart breakpoin percentages and colors of each part
-   */
-  chartValue: PropTypes.object,
-};
-
 CircularProgressBar.defaultProps = {
   color: "#0ea5e9",
   radius: "5rem",
-  style: "solid",
+  styles: "solid",
   size: "1rem",
   percentage: 75,
   duration: 2000,
