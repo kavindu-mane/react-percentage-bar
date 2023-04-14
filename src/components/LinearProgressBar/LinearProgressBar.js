@@ -28,6 +28,15 @@ export const LinearProgressBar = ({
   };
   const [state, setState] = useState(0);
   const currentWidth = (p) => (toPX(width) * p) / 100;
+
+  let startColor = "#0ea5e9";
+  let endColor = "#0ea5e9";
+  // stroke color gradient
+  if (Array.isArray(color)) {
+    startColor = color[0] === undefined ? startColor : color[0];
+    endColor = color[1] === undefined ? endColor : color[1];
+  } else startColor = endColor = color;
+
   const track = {
     background: trackColor,
     width: width,
@@ -35,10 +44,11 @@ export const LinearProgressBar = ({
     borderRadius: roundLineCap ? `calc(${height} / 2)` : 0,
   };
   const progressBar = {
-    background: color,
+    background: `linear-gradient(to ${
+      startDirection === "right" ? "left" : "right"
+    } , ${startColor}, ${endColor})`,
     height: height,
     width: animation ? currentWidth(state) : currentWidth(percentage),
-    justifyContent: percentagePosition === "onleft" ? "left" : "right",
     right: startDirection === "right" ? 0 : "auto",
     borderRadius: roundLineCap ? `calc(${height} / 2)` : 0,
   };
@@ -90,7 +100,8 @@ export const LinearProgressBar = ({
               style={{
                 color: percentageColor,
                 fontSize: `calc(${height} * 0.8)`,
-                display: isOn ? "flex" : "none",
+                display: isOn ? "block" : "none",
+                textAlign: percentagePosition === "onleft" ? "left" : "right",
               }}
               className={"on-top-percentage"}
             >
@@ -128,6 +139,6 @@ LinearProgressBar.defaultProps = {
   percentagePosition: "right",
   startDirection: "left",
   animation: true,
-  percentageAnimation: false,
+  percentageAnimation: true,
   roundLineCap: true,
 };

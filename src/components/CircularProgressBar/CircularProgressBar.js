@@ -27,7 +27,7 @@ export const CircularProgressBar = ({
   loopCount,
   startDelay,
   reverseDelay,
-  antiClockWize,
+  antiClockWise,
   padding,
   backgroundColor,
   separator,
@@ -71,17 +71,22 @@ export const CircularProgressBar = ({
   const i_dia = (toPX(radius) - toPX(size)) * 2;
   innerDiameter = { width: i_dia, height: i_dia };
   outerDiameter = { width: o_dia, height: o_dia };
-  const outerBackground = { padding: padding, background: backgroundColor };
+  const outerBackground = {
+    width: o_dia + toPX(padding) * 2,
+    height: o_dia + toPX(padding) * 2,
+    background: backgroundColor,
+  };
   background = {
     borderColor: trackColor,
     borderWidth: size,
     borderStyle: styles === "pie-chart" ? "none" : "solid",
+    margin: padding,
   };
 
   return (
     <div
       className={["outer-div", outerShadow].join(" ")}
-      style={{ ...outerDiameter, ...outerBackground }}
+      style={{ ...outerBackground }}
     >
       <div
         className={["inner-div", innerShadow].join(" ")}
@@ -104,7 +109,7 @@ export const CircularProgressBar = ({
           loopCount={loopCount}
           startDelay={startDelay}
           reverseDelay={reverseDelay}
-          antiClockWize={antiClockWize}
+          antiClockWise={antiClockWise}
           margin={padding}
           separator={separator}
           styles={styles}
@@ -154,7 +159,7 @@ CircularProgressBar.defaultProps = {
   loopCount: 0,
   startDelay: 100,
   reverseDelay: 100,
-  antiClockWize: false,
+  antiClockWise: false,
   padding: 0,
   backgroundColor: "transparent",
   separator: [5, 12, "#fff"],

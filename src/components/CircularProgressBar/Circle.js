@@ -16,7 +16,7 @@ export const Circle = ({
   loopCount,
   startDelay,
   reverseDelay,
-  antiClockWize,
+  antiClockWise,
   margin,
   separator,
   styles,
@@ -122,7 +122,7 @@ export const Circle = ({
   } else startColor = endColor = color;
 
   //   add transform value
-  if (antiClockWize)
+  if (antiClockWise)
     transformValue = `rotateZ(${startPosition + 90}deg) rotateY(180deg)`;
   else transformValue = `rotateZ(${startPosition - 90}deg)`;
 
