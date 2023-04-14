@@ -124,3 +124,16 @@ This props are work with only `<CircularProgressBar/>` components.
 > <b>#</b> `Separator` require array follow this format `[width , count , color]` <br/>
 > <b>##</b> `chartValue` require object follow this format `{percentage-1:color , percentage-2:color}`
 
+## CircularProgressBar with children.
+  
+`<CircularProgressBar/>` component allows to work with childrens. It's allows to use more than `percentage` and `text` value inside the circular progress bar.
+
+```jsx
+<CircularProgressBar>
+    <ChildrenComponent/>
+<CircularProgressBar/>
+```
+
+## License
+
+[![View License](https://img.shields.io/github/license/kavindu-mane/react-percentage-bar?color=success)](LICENSE)
