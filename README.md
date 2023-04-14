@@ -1,4 +1,4 @@
-# <p align = "center">React Percentage Bar</p>
+# <p align = "center">🚀 React Percentage Bar.</p>
 <div align = "center">
 <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/kavindu-mane/react-percentage-bar">
 <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/react-percentage-bar">
