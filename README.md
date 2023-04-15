@@ -62,7 +62,7 @@ This props are work with both `<CircularProgressBar/>` and `<LinearProgressBar/>
 | Name                  | Description                                                        | Default   | Req. Data Types            |
 |-----------------------|--------------------------------------------------------------------|-----------|----------------------------|
 | `text`                | Text to display inside the component.                              | `null`    | `string`                   |
-| `textClass`           | Custom CSS class for styling the `text` value.                     | `null`    | `string`                   | 
+| `textStyle`           | Add Custom styles for styling the `text` value.                    | `null`    | `object`                   | 
 | `percentage`          | Percentage of the progress bar.                                    | `75`      | `number`                   |
 | `showPercentage`      | Percentage value show or not inside component.                     | `true`    | `boolean`                  |
 | `color`               | Color or color gradient of progress bar.                           | `#0ea5e9` | `string` or `string array` |
@@ -80,16 +80,16 @@ This props are work with only `<LinearProgressBar/>` components.
 | Name                  | Description                                                            | Default   | Req. Data Types     |
 |-----------------------|------------------------------------------------------------------------|-----------|---------------------|
 | `percentageColor`     | Color of the `percentage` value.                                       | `#00235B` | `string`            |
-| `width`               | Maximum width (100%) of the progress bar.<b>*</b>                      | `20rem`   | `string` or `number`| 
-| `height`              | Height of the progress bar.<b>*</b>                                    | `0.8rem`  | `string` or `number`|
-| `percentagePosition`  | Percentage value show position.<b>**</b>                               | `right`   | `string`            |
+| `width`               | Maximum width (100%) of the progress bar.★                             | `20rem`   | `string` or `number`| 
+| `height`              | Height of the progress bar.★                                           | `0.8rem`  | `string` or `number`|
+| `percentagePosition`  | Percentage value show position.★★                                      | `right`   | `string`            |
 | `startDirection`      | Progress bar 0% based direction.Value must be a `left` or `right`      | `left`    | `string`            |
 
 
 <b>❇️ NOTE :</b> 
 
-> <b>*</b> All measurements must be one of `number` , `em` , `px` , `rem` value. <br/>
-> <b>**</b> Value must be one of `left` , `right` , `onleft` or `onright`
+> ★ All measurements must be one of `number` , `em` , `px` , `rem` value. <br/>
+> ★★ Value must be one of `left` , `right` , `onleft` or `onright`
 
 
 #### _CircularProgressBar only props:_
@@ -98,31 +98,31 @@ This props are work with only `<CircularProgressBar/>` components.
 
 | Name               | Description                                                                                                                                 | Default                                           | Req. Data Types       |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|-----------------------|
-| `radius`           | Radius value of the progress circle.<b>*</b>                                                                                                | `5rem`                                            | `string` or `number`  |
-| `styles`           | Progress circle style.<b>**</b>                                                                                                             | `solid`                                           | `string`              | 
-| `size`             | Progress circle stroke width.<b>*</b>                                                                                                       | `1rem`                                            | `string` or `number`  |
+| `radius`           | Radius value of the progress circle.★                                                                                                       | `5rem`                                            | `string` or `number`  |
+| `styles`           | Progress circle style.★★                                                                                                                    | `solid`                                           | `string`              | 
+| `size`             | Progress circle stroke width.★                                                                                                              | `1rem`                                            | `string` or `number`  |
 | `startPosition`    | Progress circle 0% based position (0 is top most point). `+ values` clockwisely and `- values` anti-clockwisely change the start position.  | `0`                                               | `string` or `number`  |
 | `shadow`           | Shadows add or not for progress circle.                                                                                                     | `false`                                           | `boolean`             |
-| `innerShadowClass` | Costom CSS class for progress circle inside shadow.                                                                                         | `null`                                            | `string`              |
-| `outerShadowClass` | Costom CSS class for progress circle outside shadow.                                                                                        | `null`                                            | `string`              |
-| `PercentageClass`  | Costom CSS class for percentage value.                                                                                                      | `null`                                            | `string`              |
+| `innerShadowStyle` | Add Custom styles for progress circle inside shadow.                                                                                        | `null`                                            | `object`              |
+| `outerShadowStyle` | Add Custom styles for progress circle outside shadow.                                                                                       | `null`                                            | `object`              |
+| `PercentageStyle`  | Add Custom styles for percentage value.                                                                                                     | `null`                                            | `object`              |
 | `reverse`          | Progress circle reverse animation add or not.                                                                                               | `true`                                            | `boolean`             |
 | `reverseDuration`  | Duration of the reverse animation.(follow `duration`prop constraints)                                                                       | `2000`                                            | `number`              |
 | `loopCount`        | Progress circle animations iterations count.                                                                                                | `0`                                               | `number` or `Infinity`|
 | `startDelay`       | Forward animation start delay. (Not affect to 1st iteration)                                                                                | `100`                                             | `number`              |
-| `reverseDelay`     |  Backward animation start delay.                                                                                                            | `100`                                             | `number`              |
+| `reverseDelay`     | Backward animation start delay.                                                                                                             | `100`                                             | `number`              |
 | `antiClockWise`    | Progress circle `forward` direction is anti-clockwise or not.                                                                               | `false`                                           | `boolean`             |
-| `padding`          |  Gap between progress circle and background circle.                                                                                         | `0`                                               | `string` or `number`  |
+| `padding`          | Gap between progress circle and background circle.                                                                                          | `0`                                               | `string` or `number`  |
 | `backgroundColor`  | Color of the background circle.                                                                                                             | `transparent`                                     | `string`              |
-| `separator`        | If `styles` is `separators` , customize separators width , count and color. <b>#</b>                                                        | `[5, 12, "#fff"]`                                 | `array`               |
-| `chartValue`       | If `styles` is `pie-chart` , customize sections end percentages and color. <b>##</b>                                                        | `{ 20: "#9CB4CC", 60: "#0EA293", 100: "#FFA559" }`| `object`              |
+| `separator`        | If `styles` is `separators` , customize separators width , count and color.✦                                                                | `[5, 12, "#fff"]`                                 | `array`               |
+| `chartValue`       | If `styles` is `pie-chart` , customize sections end percentages and color.✦✦                                                                | `{ 20: "#9CB4CC", 60: "#0EA293", 100: "#FFA559" }`| `object`              |
 
 <b>❇️ NOTE :</b> 
 
-> <b>*</b> All measurements must be one of `number` , `em` , `px` , `rem` value. <br/>
-> <b>**</b> Value must be one of `solid` , `pie-chart` or `separators`<br/>
-> <b>#</b> `Separator` require array follow this format `[width , count , color]` <br/>
-> <b>##</b> `chartValue` require object follow this format `{percentage-1:color , percentage-2:color}`
+> ★ All measurements must be one of `number` , `em` , `px` , `rem` value. <br/>
+> ★★ Value must be one of `solid` , `pie-chart` or `separators`<br/>
+> ✦ `Separator` require array follow this format `[width , count , color]` <br/>
+> ✦✦ `chartValue` require object follow this format `{percentage-1:color , percentage-2:color}`
 
 ## CircularProgressBar with children.
   
