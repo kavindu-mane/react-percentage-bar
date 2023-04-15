@@ -2,14 +2,6 @@
   padding: 2px;
 }
 
-.text-linear {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-weight: 600;
-  color: #00235B;
-}
-
 .inner-div-linear {
   position: relative;
   display: flex;

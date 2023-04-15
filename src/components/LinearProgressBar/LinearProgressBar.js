@@ -3,7 +3,7 @@ import "./linear-styles.css";
 
 export const LinearProgressBar = ({
   text,
-  textClass,
+  textStyle,
   percentageColor,
   percentage,
   showPercentage,
@@ -52,7 +52,17 @@ export const LinearProgressBar = ({
     right: startDirection === "right" ? 0 : "auto",
     borderRadius: roundLineCap ? `calc(${height} / 2)` : 0,
   };
-  textClass = textClass === null ? "text-linear" : textClass;
+  textStyle =
+    textStyle === null
+      ? {
+          fontSize: "1.2rem",
+          margin: "10px 0",
+          fontFamily:
+            "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
+          fontWeight: "600",
+          color: "#00235B",
+        }
+      : textStyle;
   const isLeft = showPercentage && percentagePosition === "left";
   const isRight = showPercentage && percentagePosition === "right";
   const isOn =
@@ -75,7 +85,7 @@ export const LinearProgressBar = ({
       className="outer-div-linear"
       style={{ width: `calc(${width} + 5rem)` }}
     >
-      <p className={textClass}>{text}</p>
+      <p style={{...textStyle}}>{text}</p>
       <div className="inner-div-linear">
         <p
           style={{
@@ -126,8 +136,8 @@ export const LinearProgressBar = ({
 };
 
 LinearProgressBar.defaultProps = {
-  text: null,
-  textClass: null,
+  text: "kukku",
+  textStyle: null,
   percentageColor: "#00235B",
   percentage: 75,
   showPercentage: true,

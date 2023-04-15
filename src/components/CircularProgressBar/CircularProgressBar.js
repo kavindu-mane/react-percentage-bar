@@ -12,12 +12,12 @@ export const CircularProgressBar = ({
   duration,
   startPosition,
   shadow,
-  innerShadowClass,
-  outerShadowClass,
+  innerShadowStyle,
+  outerShadowStyle,
   text,
   showPercentage,
-  PercentageClass,
-  textClass,
+  PercentageStyle,
+  textStyle,
   children,
   roundLineCap,
   animation,
@@ -53,18 +53,27 @@ export const CircularProgressBar = ({
 
   // set shadow class
   if (shadow) {
-    if (innerShadowClass !== null) innerShadow = innerShadowClass;
-    else innerShadow = "inner-shadow";
+    if (innerShadowStyle !== null) innerShadow = innerShadowStyle;
+    else
+      innerShadow = {
+        boxShadow:
+          "inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2), inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7), -0.5px -0.5px 0px rgba(255, 255, 255, 1), 0.5px 0.5px 0px rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05)",
+      };
 
-    if (outerShadowClass !== null) outerShadow = outerShadowClass;
-    else outerShadow = "outer-shadow";
-  } else innerShadow = outerShadow = "shadow-no";
+    if (outerShadowStyle !== null) outerShadow = outerShadowStyle;
+    else
+      outerShadow = {
+        boxShadow:
+          "6px 6px 10px -1px rgba(0, 0, 0, 0.15), -6px -6px 10px -1px rgba(255, 255, 255, 0.7)",
+      };
+  } else innerShadow = outerShadow = { boxShadow: "none" };
 
   // set percentage class
-  if (PercentageClass === null) PercentageClass = "percentage";
+  if (PercentageStyle === null)
+    PercentageStyle = { fontSize: "1.5rem", fontWeight: "600" };
 
   // set text class
-  if (textClass === null) textClass = "text";
+  if (textStyle === null) textStyle = { fontSize: "1.3rem", fontWeight: "500" };
 
   // set width and height of the inner and outer divs
   const o_dia = toPX(radius) * 2;
@@ -84,13 +93,10 @@ export const CircularProgressBar = ({
   };
 
   return (
-    <div
-      className={["outer-div", outerShadow].join(" ")}
-      style={{ ...outerBackground }}
-    >
+    <div className={"outer-div"} style={{ ...outerBackground, ...outerShadow }}>
       <div
-        className={["inner-div", innerShadow].join(" ")}
-        style={{ ...background, ...outerDiameter }}
+        className={"inner-div"}
+        style={{ ...background, ...outerDiameter, ...innerShadow }}
         /// in testing outerDiameter cannot use and innerDiameter use it
       >
         <Circle
@@ -117,14 +123,18 @@ export const CircularProgressBar = ({
         />
         <div className="text-area" style={{ ...innerDiameter }}>
           <p
-            className={PercentageClass}
-            style={{ display: styles !== "pie-chart" ? "flex" : "none" }}
+            style={{
+              ...PercentageStyle,
+              display: styles !== "pie-chart" ? "flex" : "none",
+            }}
           >
             {showPercentage ? `${currentPercentage}%` : ""}
           </p>
           <p
-            className={textClass}
-            style={{ display: styles !== "pie-chart" ? "flex" : "none" }}
+            style={{
+              ...textStyle,
+              display: styles !== "pie-chart" ? "flex" : "none",
+            }}
           >
             {text}
           </p>
@@ -144,13 +154,13 @@ CircularProgressBar.defaultProps = {
   duration: 2000,
   trackColor: "#efefef",
   startPosition: 0,
-  shadow: false,
-  innerShadowClass: null,
-  outerShadowClass: null,
+  shadow: true,
+  innerShadowStyle: null,
+  outerShadowStyle: null,
   text: null,
   showPercentage: true,
-  PercentageClass: null,
-  textClass: null,
+  PercentageStyle: null,
+  textStyle: null,
   roundLineCap: true,
   animation: true,
   percentageAnimation: true,
