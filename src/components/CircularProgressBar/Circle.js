@@ -156,7 +156,7 @@ export const Circle = ({
       style={{ transform: transformValue, margin: margin }}
     >
       <defs>
-        <linearGradient id="GradientColor">
+        <linearGradient id={`${startColor.substring(1)}-${endColor}`}>
           <stop offset="0%" stopColor={endColor} />
           <stop offset="100%" stopColor={startColor} />
         </linearGradient>
@@ -164,6 +164,7 @@ export const Circle = ({
 
       <circle
         className="stroke-circles"
+        style={{ stroke: `url(#${startColor.substring(1)}-${endColor}`}}
         cx={toPX(radius)}
         cy={toPX(radius)}
         r={toPX(radius) - toPX(size) / 2}

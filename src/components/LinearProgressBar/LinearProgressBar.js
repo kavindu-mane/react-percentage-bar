@@ -136,7 +136,7 @@ export const LinearProgressBar = ({
 };
 
 LinearProgressBar.defaultProps = {
-  text: "kukku",
+  text: null,
   textStyle: null,
   percentageColor: "#00235B",
   percentage: 75,

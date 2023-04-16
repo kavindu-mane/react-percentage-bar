@@ -16,7 +16,7 @@ export const CircularProgressBar = ({
   outerShadowStyle,
   text,
   showPercentage,
-  PercentageStyle,
+  percentageStyle,
   textStyle,
   children,
   roundLineCap,
@@ -69,8 +69,8 @@ export const CircularProgressBar = ({
   } else innerShadow = outerShadow = { boxShadow: "none" };
 
   // set percentage class
-  if (PercentageStyle === null)
-    PercentageStyle = { fontSize: "1.5rem", fontWeight: "600" };
+  if (percentageStyle === null)
+    percentageStyle = { fontSize: "1.5rem", fontWeight: "600" };
 
   // set text class
   if (textStyle === null) textStyle = { fontSize: "1.3rem", fontWeight: "500" };
@@ -124,7 +124,7 @@ export const CircularProgressBar = ({
         <div className="text-area" style={{ ...innerDiameter }}>
           <p
             style={{
-              ...PercentageStyle,
+              ...percentageStyle,
               display: styles !== "pie-chart" ? "flex" : "none",
             }}
           >
@@ -154,12 +154,12 @@ CircularProgressBar.defaultProps = {
   duration: 2000,
   trackColor: "#efefef",
   startPosition: 0,
-  shadow: true,
+  shadow: false,
   innerShadowStyle: null,
   outerShadowStyle: null,
   text: null,
   showPercentage: true,
-  PercentageStyle: null,
+  percentageStyle: null,
   textStyle: null,
   roundLineCap: true,
   animation: true,

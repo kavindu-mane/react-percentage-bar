@@ -11,10 +11,6 @@ circle{
   fill: none;
 }
 
-.stroke-circles{
-  stroke: url(#GradientColor);
-}
-
 svg {
   position: absolute;
   top: 0;
