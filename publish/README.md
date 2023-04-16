@@ -1,3 +1,7 @@
+<div align = "center">
+<img src = "https://github.com/kavindu-mane/react-percentage-bar/blob/main/rpb_cover.png" alt = "covr"/>
+</div>
+                                                                                                      
 # 🚀 React Percentage Bar.
 <div align = "center">
 <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/kavindu-mane/react-percentage-bar">
@@ -8,6 +12,12 @@
 <img alt="npm" src="https://img.shields.io/npm/dw/react-percentage-bar">
 </div>
 
+
+<br/>
+<div align = "center">
+<a href = "https://www.kavindu.me/projects/react-percentage-bar" alt = "demo" ><img src = "https://img.shields.io/badge/_DEMO_-%2303C988.svg?style=for-the-badge&&logoColor=white" alt = "demo"/></a>
+ </div>
+ 
 ## Installation
 _Install with npm:_
 
