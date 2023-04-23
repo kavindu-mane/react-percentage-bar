@@ -9,7 +9,7 @@
 <img alt="npm" src="https://img.shields.io/npm/v/react-percentage-bar?label=npm%20version">
 <br/>
 <img alt="GitHub" src="https://img.shields.io/github/license/kavindu-mane/react-percentage-bar?color=success">
-<img alt="npm" src="https://img.shields.io/npm/dw/react-percentage-bar">
+<img alt="npm" src="https://img.shields.io/npm/dt/react-percentage-bar">
 </div>
 
 
