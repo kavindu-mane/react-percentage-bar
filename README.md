@@ -15,7 +15,7 @@
 
 <br/>
 <div align = "center">
-<a href = "https://www.kavindu.me/projects/react-percentage-bar" alt = "demo" ><img src = "https://img.shields.io/badge/_DEMO_-%2303C988.svg?style=for-the-badge&&logoColor=white" alt = "demo"/></a>
+<a href = "https://www.kavindu.me/react-percentage-bar" alt = "demo" ><img src = "https://img.shields.io/badge/_DEMO_-%2303C988.svg?style=for-the-badge&&logoColor=white" alt = "demo"/></a>
  </div>
  
 ## Installation
