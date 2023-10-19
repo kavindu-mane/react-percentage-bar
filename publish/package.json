@@ -1,6 +1,6 @@
 {
   "name": "react-percentage-bar",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "React linear and circular percentage progress bars.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

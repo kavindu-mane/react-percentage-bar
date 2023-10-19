@@ -2,14 +2,14 @@
 <img src = "https://github.com/kavindu-mane/react-percentage-bar/blob/main/rpb_cover.png" alt = "covr"/>
 </div>
                                                                                                       
-# 🚀 React Percentage Bar.
+# <p align = "center">🚀 React Percentage Bar.</p>
 <div align = "center">
 <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/kavindu-mane/react-percentage-bar">
 <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/react-percentage-bar">
 <img alt="npm" src="https://img.shields.io/npm/v/react-percentage-bar?label=npm%20version">
 <br/>
 <img alt="GitHub" src="https://img.shields.io/github/license/kavindu-mane/react-percentage-bar?color=success">
-<img alt="npm" src="https://img.shields.io/npm/dw/react-percentage-bar">
+<img alt="npm" src="https://img.shields.io/npm/dt/react-percentage-bar">
 </div>
 
 
@@ -115,7 +115,7 @@ This props are work with only `<CircularProgressBar/>` components.
 | `shadow`           | Shadows add or not for progress circle.                                                                                                     | `false`                                           | `boolean`             |
 | `innerShadowStyle` | Add Custom styles for progress circle inside shadow.                                                                                        | `null`                                            | `object`              |
 | `outerShadowStyle` | Add Custom styles for progress circle outside shadow.                                                                                       | `null`                                            | `object`              |
-| `PercentageStyle`  | Add Custom styles for percentage value.                                                                                                     | `null`                                            | `object`              |
+| `percentageStyle`  | Add Custom styles for percentage value.                                                                                                     | `null`                                            | `object`              |
 | `reverse`          | Progress circle reverse animation add or not.                                                                                               | `true`                                            | `boolean`             |
 | `reverseDuration`  | Duration of the reverse animation.(follow `duration`prop constraints)                                                                       | `2000`                                            | `number`              |
 | `loopCount`        | Progress circle animations iterations count.                                                                                                | `0`                                               | `number` or `Infinity`|

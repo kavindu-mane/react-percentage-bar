@@ -35,16 +35,13 @@ export const Circle = ({
   const [isReverse, setIsReverse] = useState(false);
   const [currentLoop, setCurrentLoop] = useState(1);
   let pxValue;
-  if (styles !== "pie-chart")
-    pxValue = 2 * Math.PI * (toPX(radius) - toPX(size) / 2);
+  if (styles !== "pie-chart") pxValue = 2 * Math.PI * (toPX(radius) - toPX(size) / 2);
   else pxValue = 2 * Math.PI * (toPX(radius) / 2);
   const dashOfset = (state) => {
     return (
       pxValue -
       (pxValue * parseInt(state)) / 100 +
-      (![0, 100].includes(state) && roundLineCap && styles !== "pie-chart"
-        ? toPX(size) / 4
-        : 0)
+      (![0, 100].includes(state) && roundLineCap && styles !== "pie-chart" ? toPX(size) / 4 : 0)
     );
   };
   let startColor = "#0ea5e9";
@@ -56,10 +53,8 @@ export const Circle = ({
 
   //  add delay for animations
   const delaySet = (duration, value) => {
-    if (value === 1 && currentLoop !== 1 && state === 0)
-      return startDelay + duration / 100;
-    else if (value === -1 && state === percentage)
-      return reverseDelay + duration / 100;
+    if (value === 1 && currentLoop !== 1 && state === 0) return startDelay + duration / 100;
+    else if (value === -1 && state === percentage) return reverseDelay + duration / 100;
     else return duration / 100;
   };
 
@@ -74,9 +69,7 @@ export const Circle = ({
   const animatingFunc = (duration, value) => {
     setTimeout(() => {
       setState((prevState) => checkPercentage(prevState + value));
-      returnState(
-        !percentageAnimation ? percentage : checkPercentage(state + value)
-      );
+      returnState(!percentageAnimation ? percentage : checkPercentage(state + value));
       if (state + value >= percentage) setIsReverse(true);
       if (state + value <= 0) {
         setIsReverse(false);
@@ -91,8 +84,7 @@ export const Circle = ({
     if ((animation || percentageAnimation) && styles !== "pie-chart") {
       if (loopCount >= currentLoop) {
         if (percentage > state && !isReverse) animatingFunc(duration, +1);
-        else if (state > 0 && reverse && isReverse)
-          animatingFunc(reverseDuration, -1);
+        else if (state > 0 && reverse && isReverse) animatingFunc(reverseDuration, -1);
         else if (state > 0 && !reverse && isReverse) {
           setIsReverse(false);
           setCurrentLoop((prev) => ++prev);
@@ -122,8 +114,7 @@ export const Circle = ({
   } else startColor = endColor = color;
 
   //   add transform value
-  if (antiClockWise)
-    transformValue = `rotateZ(${startPosition + 90}deg) rotateY(180deg)`;
+  if (antiClockWise) transformValue = `rotateZ(${startPosition + 90}deg) rotateY(180deg)`;
   else transformValue = `rotateZ(${startPosition - 90}deg)`;
 
   // define cicle diameter
@@ -133,6 +124,7 @@ export const Circle = ({
   const pieChartCircles = (p) => {
     return (
       <circle
+        className="circle"
         r="25%"
         cx="50%"
         cy="50%"
@@ -141,30 +133,35 @@ export const Circle = ({
         strokeDasharray={pxValue}
         stroke={chartValue[p]}
         display={styles === "pie-chart" ? "flex" : "none"}
-        strokeDashoffset={dashOfset(p > pieState && animation ? pieState : p)}
-      ></circle>
+        strokeDashoffset={dashOfset(p > pieState && animation ? pieState : p)}></circle>
     );
   };
 
   return (
     <svg
+      className="svg"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       width={diameter}
       height={diameter}
       viewBox={`0 0 ${diameter} ${diameter}`}
-      style={{ transform: transformValue, margin: margin }}
-    >
+      style={{ transform: transformValue, margin: margin }}>
       <defs>
         <linearGradient id={`${startColor.substring(1)}-${endColor}`}>
-          <stop offset="0%" stopColor={endColor} />
-          <stop offset="100%" stopColor={startColor} />
+          <stop
+            offset="0%"
+            stopColor={endColor}
+          />
+          <stop
+            offset="100%"
+            stopColor={startColor}
+          />
         </linearGradient>
       </defs>
 
       <circle
-        className="stroke-circles"
-        style={{ stroke: `url(#${startColor.substring(1)}-${endColor}`}}
+        className="stroke-circles circle"
+        style={{ stroke: `url(#${startColor.substring(1)}-${endColor}` }}
         cx={toPX(radius)}
         cy={toPX(radius)}
         r={toPX(radius) - toPX(size) / 2}
@@ -176,6 +173,7 @@ export const Circle = ({
       />
 
       <circle
+        className="circle"
         cx={toPX(radius)}
         cy={toPX(radius)}
         r={toPX(radius) - toPX(size) / 2}

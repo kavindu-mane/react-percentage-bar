@@ -7,11 +7,11 @@
   border-radius: 50%;
 }
 
-circle{
+.circle{
   fill: none;
 }
 
-svg {
+.svg {
   position: absolute;
   top: 0;
   left: 0;
