@@ -1,54 +1,71 @@
 {
-  "name": "react-percentage-bar",
-  "version": "1.2.0",
-  "description": "React linear and circular percentage progress bars.",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "build": "tsup --minify"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kavindu-mane/react-percentage-bar.git"
-  },
-  "keywords": [
-    "react",
-    "percentage-bar",
-    "progress-bar",
-    "percentage-circle",
-    "percentage-line",
-    "progress-circle",
-    "progress-line"
-  ],
-  "author": "Kavindu Manahara",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kavindu-mane/react-percentage-bar/issues"
-  },
-  "homepage": "https://www.kavindu.me/projects/react-percentage-bar",
-  "devDependencies": {
-    "@chromatic-com/storybook": "^1.2.22",
-    "@storybook/addon-essentials": "^8.0.0",
-    "@storybook/addon-interactions": "^8.0.0",
-    "@storybook/addon-links": "^8.0.0",
-    "@storybook/addon-onboarding": "^8.0.0",
-    "@storybook/blocks": "^8.0.0",
-    "@storybook/react": "^8.0.0",
-    "@storybook/react-vite": "^8.0.0",
-    "@storybook/test": "^8.0.0",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "storybook": "^8.0.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.2"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+	"name": "react-percentage-bar",
+	"version": "1.2.1",
+	"description": "React linear and circular percentage progress bars.",
+	"main": "dist/index.js",
+	"module": "dist/index.es.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build",
+		"build:css": "postcss src/**/*.css -d dist",
+		"build": "npm run build:css && tsup --minify",
+		"build-lib": "rollup -c"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kavindu-mane/react-percentage-bar.git"
+	},
+	"keywords": [
+		"react",
+		"percentage-bar",
+		"progress-bar",
+		"percentage-circle",
+		"percentage-line",
+		"progress-circle",
+		"progress-line"
+	],
+	"author": "Kavindu Manahara",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/kavindu-mane/react-percentage-bar/issues"
+	},
+	"homepage": "https://www.kavindu.me/projects/react-percentage-bar",
+	"devDependencies": {
+		"@babel/preset-env": "^7.21.4",
+		"@babel/preset-react": "^7.18.6",
+		"@babel/preset-typescript": "^7.21.4",
+		"@chromatic-com/storybook": "^1.2.22",
+		"@rollup/plugin-node-resolve": "^15.0.2",
+		"@rollup/plugin-typescript": "^11.1.6",
+		"@storybook/addon-essentials": "^8.0.0",
+		"@storybook/addon-interactions": "^8.0.0",
+		"@storybook/addon-links": "^8.0.0",
+		"@storybook/addon-onboarding": "^8.0.0",
+		"@storybook/blocks": "^8.0.0",
+		"@storybook/react": "^8.0.0",
+		"@storybook/react-vite": "^8.0.0",
+		"@storybook/test": "^8.0.0",
+		"@swc/core": "^1.4.8",
+		"autoprefixer": "^10.4.18",
+		"cssnano": "^6.1.0",
+		"postcss": "^8.4.35",
+		"postcss-cli": "^11.0.0",
+		"prop-types": "^15.8.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"rollup": "^2.79.1",
+		"rollup-plugin-babel": "^4.4.0",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"rollup-plugin-postcss": "^4.0.2",
+		"rollup-plugin-terser": "^7.0.2",
+		"storybook": "^8.0.0",
+		"tsup": "^8.0.2",
+		"typescript": "^5.4.2"
+	},
+	"peerDependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	}
 }
