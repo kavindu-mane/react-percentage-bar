@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
+import { CircleProps } from "../../types";
+import { toPX } from "../functions";
 
 export const Circle = ({
   radius,
@@ -21,26 +23,19 @@ export const Circle = ({
   separator,
   styles,
   chartValue,
-}) => {
-  const toPX = (measure) => {
-    if (
-      measure.toString().toLowerCase().includes("em") ||
-      measure.toString().toLowerCase().includes("em")
-    )
-      return 16 * parseFloat(measure, 10);
-    else return parseFloat(measure, 10);
-  };
+} : CircleProps) => {
   const [state, setState] = useState(0);
   const [pieState, setPieState] = useState(0);
   const [isReverse, setIsReverse] = useState(false);
   const [currentLoop, setCurrentLoop] = useState(1);
-  let pxValue;
+  let pxValue : number;
+
   if (styles !== "pie-chart") pxValue = 2 * Math.PI * (toPX(radius) - toPX(size) / 2);
   else pxValue = 2 * Math.PI * (toPX(radius) / 2);
-  const dashOfset = (state) => {
+  const dashOffset = (state: number) => {
     return (
       pxValue -
-      (pxValue * parseInt(state)) / 100 +
+      (pxValue * Math.round(state)) / 100 +
       (![0, 100].includes(state) && roundLineCap && styles !== "pie-chart" ? toPX(size) / 4 : 0)
     );
   };
@@ -51,22 +46,22 @@ export const Circle = ({
     .map(Number)
     .sort((a, b) => b - a);
 
-  //  add delay for animations
-  const delaySet = (duration, value) => {
+  // add delay for animations
+  const delaySet = (duration : number, value : number) => {
     if (value === 1 && currentLoop !== 1 && state === 0) return startDelay + duration / 100;
     else if (value === -1 && state === percentage) return reverseDelay + duration / 100;
     else return duration / 100;
   };
 
   //  check current percentage value in correct value range or if not correct the current value
-  const checkPercentage = (value) => {
+  const checkPercentage = (value : number) => {
     if (value > percentage) return percentage;
     else if (value < 0) return 0;
     else return value;
   };
 
   // progress bar animating
-  const animatingFunc = (duration, value) => {
+  const animatingFunc = (duration : number, value : number) => {
     setTimeout(() => {
       setState((prevState) => checkPercentage(prevState + value));
       returnState(!percentageAnimation ? percentage : checkPercentage(state + value));
@@ -117,11 +112,11 @@ export const Circle = ({
   if (antiClockWise) transformValue = `rotateZ(${startPosition + 90}deg) rotateY(180deg)`;
   else transformValue = `rotateZ(${startPosition - 90}deg)`;
 
-  // define cicle diameter
+  // define circle diameter
   const diameter = toPX(radius) * 2;
 
   // pie chart creating function
-  const pieChartCircles = (p) => {
+  const pieChartCircles = (p:number) => {
     return (
       <circle
         className="circle"
@@ -133,7 +128,7 @@ export const Circle = ({
         strokeDasharray={pxValue}
         stroke={chartValue[p]}
         display={styles === "pie-chart" ? "flex" : "none"}
-        strokeDashoffset={dashOfset(p > pieState && animation ? pieState : p)}></circle>
+        strokeDashoffset={dashOffset(p > pieState && animation ? pieState : p)}></circle>
     );
   };
 
@@ -169,7 +164,7 @@ export const Circle = ({
         strokeWidth={size}
         display={styles !== "pie-chart" ? "flex" : "none"}
         strokeDasharray={pxValue}
-        strokeDashoffset={dashOfset(animation ? state : percentage)}
+        strokeDashoffset={dashOffset(animation ? state : percentage)}
       />
 
       <circle
@@ -186,7 +181,7 @@ export const Circle = ({
         } `}
       />
 
-      {chartPercentage.map((p) => {
+      {chartPercentage.map((p:number) => {
         return pieChartCircles(p);
       })}
     </svg>

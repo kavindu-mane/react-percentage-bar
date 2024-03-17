@@ -1,0 +1,72 @@
+export type CircleProps = {
+  radius: string | number;
+  size: string | number;
+  percentage: number;
+  duration: number;
+  color: string | string[];
+  startPosition: number;
+  returnState: (state: number | string) => void;
+  roundLineCap: boolean;
+  animation: boolean;
+  percentageAnimation: boolean;
+  reverse: boolean;
+  reverseDuration: number;
+  loopCount: number;
+  startDelay: number;
+  reverseDelay: number;
+  antiClockWise: boolean;
+  margin: string | number;
+  separator: [number , number , string];
+  styles: "solid" | "pie-chart"|"separators";
+  chartValue: Record<number, string>;
+};
+
+export type CircularProgressBarProps = {
+  color: string | string[];
+  trackColor: string;
+  radius: string | number;
+  styles: "solid" | "pie-chart"|"separators";
+  size: string | number;
+  percentage: number;
+  duration: number;
+  startPosition: number | string;
+  shadow: boolean;
+  innerShadowStyle: Record<string, string> | null;
+  outerShadowStyle: Record<string, string> | null;
+  text: string;
+  showPercentage: boolean;
+  percentageStyle: Record<string, string>;
+  textStyle: Record<string, string>;
+  children: React.ReactNode;
+  roundLineCap: boolean;
+  animation: boolean;
+  percentageAnimation: boolean;
+  reverse: boolean;
+  reverseDuration: number;
+  loopCount: number;
+  startDelay: number;
+  reverseDelay: number;
+  antiClockWise: boolean;
+  padding: string | number;
+  backgroundColor: string;
+  separator: [number , number , string];
+  chartValue: Record<number, string>;
+};
+
+export type LinearProgressBarProps = {
+  text: string;
+  textStyle: Record<string, string>;
+  percentageColor: string;
+  percentage: number;
+  showPercentage: boolean;
+  color: string | string[];
+  trackColor: string;
+  width: string | number;
+  height: string | number;
+  duration: number;
+  percentagePosition: "left" | "right" |"onleft" | "onright";
+  startDirection: "left" | "right" ;
+  animation: boolean;
+  percentageAnimation: boolean;
+  roundLineCap: boolean;
+}

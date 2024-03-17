@@ -1,33 +1,35 @@
 .outer-div {
-  position: relative;
-  border-radius: 50%;
+	position: relative;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.inner-div{
-  border-radius: 50%;
+.inner-div {
+	border-radius: 50%;
 }
 
-.circle{
-  fill: none;
+.circle {
+	fill: none;
 }
 
 .svg {
-  position: absolute;
-  top: 0;
-  left: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
-
-.text-area{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.text-area {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .text-area p {
-    margin: 0;
-    padding: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #00235B;
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: #00235b;
 }

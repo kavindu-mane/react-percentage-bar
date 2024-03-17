@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { LinearProgressBarProps } from "../../types";
+import { toPX } from "../functions";
 import "./linear-styles.css";
 
 export const LinearProgressBar = ({
@@ -17,17 +19,9 @@ export const LinearProgressBar = ({
   animation,
   percentageAnimation,
   roundLineCap,
-}) => {
-  const toPX = (measure) => {
-    if (
-      measure.toString().toLowerCase().includes("em") ||
-      measure.toString().toLowerCase().includes("em")
-    )
-      return 16 * parseFloat(measure, 10);
-    else return parseFloat(measure, 10);
-  };
-  const [state, setState] = useState(0);
-  const currentWidth = (p) => (toPX(width) * p) / 100;
+}:LinearProgressBarProps) => {
+  const [state, setState] = useState<number>(0);
+  const currentWidth = (p:number) => (toPX(width) * p) / 100;
 
   let startColor = "#0ea5e9";
   let endColor = "#0ea5e9";
