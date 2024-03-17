@@ -31,6 +31,7 @@ npm i react-percentage-bar
 ```javascript
 import { CircularProgressBar } from "react-percentage-bar";
 import { LinearProgressBar } from "react-percentage-bar";
+import "react-percentage-bar/dist/index.css";
 ```
 Now you can use both components like bellow.
 
