@@ -1,5 +1,5 @@
 <div align = "center">
-<img src = "https://github.com/kavindu-mane/react-percentage-bar/blob/main/rpb_cover.png" alt = "covr"/>
+<img src = "https://github.com/kavindu-mane/react-percentage-bar/blob/main/rpb_cover.png" alt = "cover"/>
 </div>
                                                                                                       
 # <p align = "center">🚀 React Percentage Bar.</p>
@@ -24,6 +24,24 @@ _Install with npm:_
 ```bash
 npm i react-percentage-bar
 ```
+
+_Install with bun:_
+
+```bash
+bun add react-percentage-bar
+```
+
+_Install with yarn:_
+
+```bash
+yarn add react-percentage-bar
+```
+
+_Install with pnpm:_
+
+```bash
+pnpm add react-percentage-bar
+```
     
 ## Usage
  _Import the progress bar components:_
@@ -31,6 +49,7 @@ npm i react-percentage-bar
 ```javascript
 import { CircularProgressBar } from "react-percentage-bar";
 import { LinearProgressBar } from "react-percentage-bar";
+import "react-percentage-bar/dist/index.css";
 ```
 Now you can use both components like bellow.
 
