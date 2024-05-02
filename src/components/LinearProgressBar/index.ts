@@ -1,1 +1,1 @@
-export * from "./LinearProgressBar"
+export {default as LinearProgressBar} from "./LinearProgressBar"

@@ -1,12 +1,12 @@
-import { CircularProgressBar } from "../components/CircularProgressBar/CircularProgressBar";
+import { CircularProgressBar } from "..";
 
 export default {
-	title: "Example/Circular",
-	component: CircularProgressBar,
-	tags: ["autodocs"],
-	parameters: {
-		layout: "fullscreen",
-	},
+  title: "Example/Circular",
+  component: CircularProgressBar,
+  tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+  },
 };
 
 export const Circular = {};

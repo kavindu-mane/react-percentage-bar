@@ -3,7 +3,7 @@ import { LinearProgressBarProps } from "../../types";
 import { toPX } from "../functions";
 import "./linear-styles.css";
 
-export const LinearProgressBar = ({
+const LinearProgressBar = ({
 	text = null,
 	textStyle = null,
 	percentageColor = "#00235B",
@@ -125,3 +125,5 @@ export const LinearProgressBar = ({
 		</div>
 	);
 };
+
+export default LinearProgressBar;

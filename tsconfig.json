@@ -1,17 +1,18 @@
 {
     "compilerOptions": {
-        "strict": true,
-        "noImplicitAny": true,
-        "esModuleInterop": true,
-        "strictNullChecks": true,
-        "target": "ES5",
-        "moduleResolution": "Node10",
-        "module": "esnext",
-        "declaration": true,
-        "isolatedModules": true,
-        "noEmit": true,
-        "outDir": "dist",
-        "jsx": "react"
+      "strict": true,
+      "noImplicitAny": true,
+      "esModuleInterop": true,
+      "strictNullChecks": true,
+      "target": "esnext",
+      "moduleResolution": "Node",
+      "module": "esnext",
+      "declaration": true,
+      "declarationDir": "types",
+      "emitDeclarationOnly": true,
+      "isolatedModules": true,
+      "outDir": "dist",
+      "jsx": "react"
     },
     "include": ["src"],
     "exclude": ["node_modules"]
