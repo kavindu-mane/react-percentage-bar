@@ -5,7 +5,7 @@ import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import terser from "@rollup/plugin-terser";
 import babel from "@rollup/plugin-babel";
-import packageJson from "./package.json" assert { type: "json" };
+import packageJson from "./package.json" with { type: "json" };
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
 export default [
@@ -34,9 +34,9 @@ export default [
         minimize: true,
       }),
       babel({
-				exclude: "node_module/**",
-				presets: ["@babel/preset-react"],
-			}),
+        exclude: "node_module/**",
+        presets: ["@babel/preset-react"],
+      }),
       nodeResolve({
         extensions: [".css"],
       }),

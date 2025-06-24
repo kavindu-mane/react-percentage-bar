@@ -1,19 +1,20 @@
 {
-    "compilerOptions": {
-      "strict": true,
-      "noImplicitAny": true,
-      "esModuleInterop": true,
-      "strictNullChecks": true,
-      "target": "esnext",
-      "moduleResolution": "Node",
-      "module": "esnext",
-      "declaration": true,
-      "declarationDir": "types",
-      "emitDeclarationOnly": true,
-      "isolatedModules": true,
-      "outDir": "dist",
-      "jsx": "react"
-    },
-    "include": ["src"],
-    "exclude": ["node_modules"]
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "target": "esnext",
+    "moduleResolution": "Node",
+    "module": "esnext",
+    "declaration": true,
+    "declarationDir": "types",
+    "emitDeclarationOnly": true,
+    "isolatedModules": true,
+    "outDir": "publish/dist",
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

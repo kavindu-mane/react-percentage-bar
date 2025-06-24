@@ -9,4 +9,13 @@ export default {
   },
 };
 
-export const Circular = {};
+export const Circular = {
+  args: {
+    trackColor: "#e9a1a1",
+    backgroundColor: "#ffffff",
+    styles: "solid",
+    innerShadowStyle: {},
+    color: "#000",
+    outerShadowStyle: {}
+  }
+};
