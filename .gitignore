@@ -1,5 +1,4 @@
 /node_modules
-/publish
+publish
 /dist
-.storybook
 *storybook.log
